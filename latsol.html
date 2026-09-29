@@ -104,11 +104,13 @@
     .question-text { font-family:"Fira Sans"; font-size:clamp(1.18rem, 3vw, 1.75rem); line-height:1.32; margin:0; font-weight:800; }
     .answers-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:12px; margin:23px 0 16px; }
     .answer-card {
-      min-height: 152px; border:0; color:#172131; padding:13px 9px; font-weight:800; font-size:.9rem;
-      cursor:pointer; text-align:center;
+      aspect-ratio:auto; min-height:132px; border:0; color:var(--ink); padding:13px 9px; font-weight:800; font-size:1rem;
+      cursor:pointer; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+      opacity:1;
     }
-    .answer-card::before { content: none; }
-    .answer-card .choice { display:inline-grid; place-items:center; width:33px; height:33px; border-radius:50%; color:#fff; background:#172131; font-family:"Fira Sans"; margin-bottom:9px; }
+    .answer-card::before { content:none; display:none; }
+    .answer-card .choice { display:inline-grid; place-items:center; flex:none; width:33px; height:33px; border-radius:50%; color:#fff; background:#172131; font-family:"Fira Sans"; margin:0; }
+    .answer-card > div { max-width:100%; padding:8px 10px; border-radius:10px; background:#fff; color:var(--ink); line-height:1.25; overflow-wrap:anywhere; }
     .answer-card:nth-child(1) { background:var(--uno-red); } .answer-card:nth-child(2) { background:var(--uno-yellow); }
     .answer-card:nth-child(3) { background:var(--uno-green); } .answer-card:nth-child(4) { background:var(--uno-blue); }
     .answer-card:nth-child(5) { background:#e0672b; }
@@ -123,8 +125,7 @@
     .feedback.good { background:#dbf7df; color:#125922; } .feedback.bad { background:#ffe0dc; color:#8c201d; }
     .hidden { display:none !important; }
     .quiz-watermark { position:fixed; z-index:1; inset:45% 0 auto; text-align:center; font-size:clamp(2rem,8vw,6rem); font-weight:900; letter-spacing:.18em; color:rgba(255,255,255,.09); transform:rotate(-18deg); pointer-events:none; user-select:none; }
-    .answer-card, .answer-card:hover, .answer-card:focus, .answer-card:active, .answer-card:disabled, .answer-card.correct, .answer-card.incorrect, .answer-card > div { color:#000000 !important; }
-    .answer-card .choice, .answer-card:hover .choice, .answer-card:focus .choice, .answer-card:active .choice, .answer-card:disabled .choice, .answer-card.correct .choice, .answer-card.incorrect .choice { color:#000000 !important; }
+    .answer-card:disabled { opacity:1; }
     .result-score { font-family:"Fira Sans"; font-size:clamp(4.5rem, 14vw, 8.8rem); line-height:.9; color:var(--uno-red); text-shadow:4px 4px 0 #f3c126; text-align:center; margin:15px 0; }
     .student-summary { background:#fff3c7; border:3px dashed #bc8121; border-radius:18px; padding:15px; text-align:center; font-weight:700; }
     .report-list { display:grid; gap:10px; margin-top:22px; }
@@ -168,7 +169,7 @@
       .cards-grid { gap:8px; grid-template-columns:repeat(5,minmax(55px,1fr)); }
       .uno-card { border-width:3px; border-radius:11px; } .uno-card .corner { font-size:.55rem; top:5px; left:5px; }
       .uno-card .corner.bottom { top:auto; left:auto; bottom:5px; right:5px; } .played-tag { font-size:.47rem; padding:3px 1px; bottom:4px; }
-      .answers-grid { grid-template-columns:repeat(2,1fr); } .answer-card { min-height:105px; } .answer-card:last-child { grid-column:1 / -1; }
+      .answers-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .answer-card { min-height:112px; font-size:.95rem; } .answer-card:last-child { grid-column:1 / -1; }
       .board-head { align-items:flex-start; flex-direction:column; } .report-row { grid-template-columns:55px 1fr; } .report-row .status { grid-column:2; width:max-content; }
       .ornament { display:none; }
     }
